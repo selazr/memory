@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Alinear el contenido verticalmente */
+  justify-content: center;
+  align-items: center; /* Centra horizontalmente el contenido */
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Contenedor para el reloj y el tablero */
+.contenedor {
+  display: flex; /* Usamos flexbox para alinear el reloj y el tablero horizontalmente */
+  align-items: center; /* Centra verticalmente los elementos en el contenedor */
+}
+
+/* Contenedor para el reloj a la izquierda */
+.izquierda {
+  display: flex;
+  justify-content: center; /* Centra el reloj horizontalmente */
+  align-items: center; /* Centra el reloj verticalmente */
+  margin-right: 20px; /* Espacio a la derecha del reloj */
+}
+
+/* Estilos del reloj */
+#reloj { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  color: black;
+  border-radius: 50%;
+  font-family: monospace;
+  font-size: 1.7rem; /* Tamaño de la fuente */
+}
+
+/* Estilos del tablero */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(6, 120px); /* 6 columnas para las tarjetas */
+  gap: 10px; /* Espacio entre tarjetas */
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+/* Estilos de las tarjetas */
+.tarjeta {
+  position: relative;
+  width: 120px; /* Ancho de la tarjeta */
+  height: 120px; /* Altura de la tarjeta */
+  perspective: 1000px; /* Necesario para el efecto 3D */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+/* Contenido de la tarjeta */
+.tarjeta-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease; /* Duración del efecto de volteo */
+}
+
+/* Estilos para la parte frontal */
+.frontal {
+  width: 100%; /* Ajusta el contenido para ocupar todo el ancho */
+  height: 100%; /* Ajusta el contenido para ocupar toda la altura */
+  background-color: #f0f0f0; /* Fondo de la parte delantera */
+  display: flex; /* Alinear el contenido (el texto) en el centro */
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden; /* Oculta la parte delantera cuando está girada */
+}
+
+/* Estilos para la cara trasera (imagen) */
+.trasera {
+  position: absolute;
+  inset: 0;
+  width: 100%; /* Ajusta la imagen para ocupar todo el ancho */
+  height: 100%; /* Ajusta la imagen para ocupar toda la altura */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+  border-radius: 8px; /* Bordes redondeados */
+  backface-visibility: hidden; /* Oculta la parte trasera cuando está girada */
+  transform: rotateY(180deg); /* Voltea la cara trasera para ocultarla inicialmente */
+}
+.tarjeta.flipped .tarjeta-content {
+  transform: rotateY(180deg);
+}
+
+/* Estilos para la consola de botones */
+.consola {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los botones */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 20px; /* Espacio superior del contenedor */
+}
+
+.inicio, .exit {
+  padding: 10px 20px; /* Espaciado interno de los botones */
+  font-size: 16px; /* Tamaño de la fuente */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+  margin: 0 10px; /* Espacio entre los botones */
+}
+
+.inicio {
+  background-color: #007bff; /* Color de fondo del botón de inicio */
+}
+
+.inicio:hover {
+  background-color: #0056b3; /* Color al pasar el ratón */
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}
+
+.inicio:active {
+  transform: scale(0.95); /* Efecto de presión al hacer clic */
+}
+
+.exit {
+  background-color: #dc3545; /* Color de fondo del botón de salida */
+}
+
+.exit:hover {
+  background-color: #c82333; /* Color al pasar el ratón */
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}
+
+.exit:active {
+  transform: scale(0.95); /* Efecto de presión al hacer clic */
+}

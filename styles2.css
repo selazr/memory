@@ -1,0 +1,36 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fondo gris claro */
+  }
+  
+  button.start {
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff; /* Color del texto */
+    background-color: #007bff; /* Fondo azul */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button.start:hover {
+    background-color: #0056b3; /* Color al pasar el ratón */
+  }
+  
+  button.start:active {
+    transform: scale(0.95); /* Efecto de presión al hacer clic */
+  }
+  
